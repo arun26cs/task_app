@@ -1,5 +1,5 @@
 <div class="card form-card">
-  <h2>➕ Add a New Task</h2>
+  <h2>Add a New Task</h2>
   <p class="text-secondary">What do you need to get done?</p>
 
   <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="form">
@@ -33,7 +33,7 @@
       type="submit"
       class="btn btn-primary"
       [disabled]="taskForm.invalid || submitting || !userId.trim()">
-      {{ submitting ? 'Adding...' : '➕ Add Task' }}
+      {{ submitting ? 'Adding...' : 'Add Task' }}
     </button>
   </form>
 </div>

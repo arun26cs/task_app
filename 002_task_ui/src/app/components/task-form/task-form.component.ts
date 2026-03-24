@@ -8,7 +8,7 @@ import { TaskService } from '../../services/task.service';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './task-form.component.html',
-  styleUrl: './task-form.component.css'
+  styleUrls: ['./task-form.component.css']
 })
 export class TaskFormComponent {
   @Input() userId = '';

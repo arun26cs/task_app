@@ -8,7 +8,7 @@ import { TaskService } from '../../services/task.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './task-list.component.html',
-  styleUrl: './task-list.component.css'
+  styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit, OnChanges {
   @Input() userId = '';
@@ -40,7 +40,7 @@ export class TaskListComponent implements OnInit, OnChanges {
 
     this.loading = true;
     this.taskService.getTasks(this.userId).subscribe({
-      next: (tasks) => {
+      next: (tasks: Task[]) => {
         this.tasks = tasks;
         this.loading = false;
       },
@@ -52,7 +52,7 @@ export class TaskListComponent implements OnInit, OnChanges {
 
   markComplete(task: Task): void {
     this.taskService.completeTask(task.id, this.userId).subscribe({
-      next: (updated) => {
+      next: (updated: Task) => {
         const index = this.tasks.findIndex(t => t.id === updated.id);
         if (index !== -1) {
           this.tasks[index] = updated;

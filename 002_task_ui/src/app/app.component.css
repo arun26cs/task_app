@@ -1,13 +1,47 @@
 .app-shell {
   min-height: 100vh;
   background: var(--bg-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---- Decorative Background Circles ---- */
+
+.app-shell::before,
+.app-shell::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  z-index: 0;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.app-shell::before {
+  width: 500px;
+  height: 500px;
+  background: var(--primary-blue);
+  top: -120px;
+  left: -150px;
+}
+
+.app-shell::after {
+  width: 420px;
+  height: 420px;
+  background: var(--accent-orange);
+  bottom: -100px;
+  right: -120px;
 }
 
 /* ---- Header ---- */
 
 .header {
+  border-top: 4px solid var(--primary-blue);
   border-bottom: 1px solid var(--divider);
   padding: var(--space-md) 0;
+  background: var(--bg-white);
+  position: relative;
+  z-index: 1;
 }
 
 .header-inner {
@@ -21,16 +55,13 @@
 
 .header h1 {
   font-size: 1.5rem;
+  color: var(--primary-blue);
 }
 
 .user-section {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-}
-
-.user-icon {
-  font-size: 1.25rem;
 }
 
 .user-input {
@@ -57,4 +88,6 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
+  position: relative;
+  z-index: 1;
 }

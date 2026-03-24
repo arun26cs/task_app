@@ -161,24 +161,38 @@ textarea {
 }
 
 .btn-complete {
-  background: transparent;
-  color: var(--primary-blue);
-  border: 1px solid var(--primary-blue);
+  background: var(--accent-orange);
+  color: #FFFFFF;
+  border: none;
   padding: 6px 14px;
   font-size: 0.8125rem;
 }
 
 .btn-complete:hover {
-  background: var(--primary-blue);
-  color: var(--bg-white);
+  background: #FF8B00;
+  color: #FFFFFF;
 }
 
-.btn-done {
+/* ============================================
+   STATUS BADGES — Atlassian Style Chips
+   ============================================ */
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 3px;
+}
+
+.badge-pending {
+  background: #DEEBFF;
+  color: #0747A6;
+}
+
+.badge-completed {
   background: var(--light-orange);
-  color: var(--accent-orange);
-  border: none;
-  padding: 6px 14px;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  cursor: default;
+  color: #FF8B00;
 }

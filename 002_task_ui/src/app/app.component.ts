@@ -8,7 +8,7 @@ import { TaskListComponent } from './components/task-list/task-list.component';
   standalone: true,
   imports: [FormsModule, TaskFormComponent, TaskListComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   userId = 'user-001';
