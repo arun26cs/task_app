@@ -1,0 +1,39 @@
+<div class="card form-card">
+  <h2>➕ Add a New Task</h2>
+  <p class="text-secondary">What do you need to get done?</p>
+
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="form">
+    <!-- Title -->
+    <div class="field">
+      <label for="title">Title</label>
+      <input
+        id="title"
+        type="text"
+        formControlName="title"
+        placeholder="e.g. Buy groceries"
+      />
+      @if (taskForm.get('title')?.touched && taskForm.get('title')?.invalid) {
+        <span class="error">Title is required (min 2 chars)</span>
+      }
+    </div>
+
+    <!-- Description -->
+    <div class="field">
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        placeholder="Optional details..."
+        rows="2"
+      ></textarea>
+    </div>
+
+    <!-- Submit -->
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="taskForm.invalid || submitting || !userId.trim()">
+      {{ submitting ? 'Adding...' : '➕ Add Task' }}
+    </button>
+  </form>
+</div>

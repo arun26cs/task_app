@@ -1,0 +1,32 @@
+<div class="app-shell">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <h1>📋 Task Manager</h1>
+      <div class="user-section">
+        <span class="user-icon">👤</span>
+        <input
+          type="text"
+          [(ngModel)]="userId"
+          placeholder="Enter user ID"
+          class="user-input"
+        />
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Add Task Form -->
+    <app-task-form
+      [userId]="userId"
+      (taskAdded)="onTaskAdded()">
+    </app-task-form>
+
+    <!-- Task List -->
+    <app-task-list
+      [userId]="userId"
+      [refreshTrigger]="refreshTrigger">
+    </app-task-list>
+  </main>
+</div>

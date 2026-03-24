@@ -1,0 +1,78 @@
+<div class="task-list-section">
+  <!-- Section Header -->
+  <div class="section-header">
+    <h2>Your Tasks</h2>
+    <span class="task-count text-secondary">{{ tasks.length }} tasks</span>
+  </div>
+
+  <!-- Loading -->
+  @if (loading) {
+    <div class="empty-state">
+      <p class="text-secondary">Loading tasks...</p>
+    </div>
+  }
+
+  <!-- Empty State -->
+  @if (!loading && tasks.length === 0) {
+    <div class="card empty-state">
+      <span class="empty-icon">📭</span>
+      <p>No tasks yet!</p>
+      <p class="text-secondary">Add one above to get started.</p>
+    </div>
+  }
+
+  <!-- Pending Tasks -->
+  @if (pendingTasks.length > 0) {
+    <div class="task-group">
+      @for (task of pendingTasks; track task.id) {
+        <div class="card task-card">
+          <div class="task-body">
+            <div class="task-info">
+              <h3>📌 {{ task.title }}</h3>
+              @if (task.description) {
+                <p class="text-secondary">{{ task.description }}</p>
+              }
+            </div>
+          </div>
+          <div class="task-footer">
+            <span class="task-date text-secondary">
+              🕐 {{ formatDate(task.createdAt) }}
+            </span>
+            <button class="btn btn-complete" (click)="markComplete(task)">
+              ✅ Complete
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Completed Tasks -->
+  @if (completedTasks.length > 0) {
+    <div class="completed-section">
+      <h3 class="text-secondary completed-heading">
+        Completed ({{ completedTasks.length }})
+      </h3>
+      <div class="task-group">
+        @for (task of completedTasks; track task.id) {
+          <div class="card task-card task-card-done">
+            <div class="task-body">
+              <div class="task-info">
+                <h3 class="done-title">✔ {{ task.title }}</h3>
+                @if (task.description) {
+                  <p class="text-secondary">{{ task.description }}</p>
+                }
+              </div>
+            </div>
+            <div class="task-footer">
+              <span class="task-date text-secondary">
+                🕐 {{ formatDate(task.updatedAt) }}
+              </span>
+              <span class="btn btn-done">✔ Done</span>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>

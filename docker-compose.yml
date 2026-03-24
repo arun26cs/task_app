@@ -36,6 +36,19 @@ services:
     networks:
       - task-network
 
+  # ---- Angular Frontend ----
+  task-ui:
+    build:
+      context: ./002_task_ui
+      dockerfile: Dockerfile
+    container_name: task-ui
+    ports:
+      - "80:80"
+    depends_on:
+      - task-service
+    networks:
+      - task-network
+
 volumes:
   pgdata:
 
