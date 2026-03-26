@@ -49,6 +49,22 @@ services:
     networks:
       - task-network
 
+  # ---- MCP Server (LLM Tool Interface) ----
+  task-mcp:
+    build:
+      context: ./002_task_mcp
+      dockerfile: Dockerfile
+    container_name: task-mcp
+    env_file: .env
+    environment:
+      TASK_SERVICE_BASE_URL: ${TASK_SERVICE_BASE_URL}
+    ports:
+      - "${MCP_SERVER_PORT}:8000"
+    depends_on:
+      - task-service
+    networks:
+      - task-network
+
 volumes:
   pgdata:
 
